@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Consumo Eléctrico</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="icon" href="https://www.cree.gob.hn/wp-content/uploads/2019/02/favicon.ico" sizes="32x32">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+    
+                <div class="logo">
+                        <a href="https://www.cree.gob.hn/" title="CREE"><img src="https://www.cree.gob.hn/wp-content/uploads/2019/02/logo_cree2.png" alt="CREE"></a>
+                </div>
+            
+                <div class="texto">
+                        <span>
+                            <b>
+                                <p>
+                                La presente calculadora de consumo le ayudará a encontrar un valor estimado en kilovatio-hora (kWh), cabe destacar
+                                que esta no le dará el valor real del gasto en su vivienda, solo proporciona valores aproximados.
+                                </p>
+                            </b>
+                        </span>
+                </div>
+                <div class="table-responsive">
+                    <table id="tablaEquipos"  class="table table-hover table-striped margen-inferior">
+                        <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Equipo</th>
+                            <th scope="col">Consumo Watts</th>
+                            <th scope="col">N° de equipos</th>
+                            <th scope="col">Horas de uso diarias</th>
+                            <th scope="col">Días al mes</th>
+                            <th scope="col">kWh/mes</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="equiposAgregados" class="table-group-divider">
+                    
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" align="right"><b>Consumo Total: </b></td>
+                                <td colspan="2" id="consumoTotal" class="table-active"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <select name="equipo" id="equipo">
+                                        <optgroup label="Equipo Eléctrico de Uso Eventual">
+                                            <option value="1">Afeitadora</option>
+                                            <option value="2">Aire acondicionado de ventana</option>
+                                            <option value="3">Aire acondicionado minisplit</option>
+                                            <option value="4">Aire acondicionado (BTU)</option>
+                                            <option value="5">Arrocera Grande</option>
+                                            <option value="6">Aspiradora</option>
+                                            <option value="7">Batidora Grande</option>
+                                            <option value="8">Batidora Pequeña</option>
+                                            <option value="9">Bombillo LED 5W</option>
+                                            <option value="10">Bombillo LED 8W</option>
+                                            <option value="11">Cafetera</option>
+                                            <option value="12">Cargador de Celular</option>
+                                            <option value="13">Consola de Videojuegos</option>
+                                            <option value="14">Computadora</option>
+                                            <option value="15">Ducha Eléctrica (110V)</option>
+                                            <option value="16">Ducha Eléctrica (220V)</option>
+                                            <option value="17">Equipo de Sonido</option>
+                                            <option value="18">Estufa con 1 Hornilla</option>
+                                            <option value="19">Estufa con 2 Hornilla</option>
+                                            <option value="20">Estufa con 4 Hornillas</option>
+                                            <option value="21">Estufa de cuarzo c/termostato</option>
+                                            <option value="22">Estufa halógena de 3 velas c/termostato</option>
+                                            <option value="23">Extractor de Jugos</option>
+                                            <option value="24">Extractor de Olores</option>
+                                            <option value="25">Freidora</option>
+                                            <option value="26">Teatro en Casa</option>
+                                            <option value="27">Horno eléctrico</option>
+                                            <option value="28">Impresora Multifunción</option>
+                                            <option value="29">Lámpara Bajo Consumo (9 Watts)</option>
+                                            <option value="30">Lámpara Bajo Consumo (11 Watts)</option>
+                                            <option value="31">Lámpara Bajo Consumo (15 Watts)</option>
+                                            <option value="32">Lámpara Bajo Consumo (20 Watts)</option>
+                                            <option value="33">Lámpara dicroica (20 Watts)</option>
+                                            <option value="34">Lámpara dicroica (50 Watts)</option>
+                                            <option value="35">Lámpara halógena (28 Watts)</option>
+                                            <option value="36">Lámpara halógena (40 Watts)</option>
+                                            <option value="37">Lámpara halógena (60 Watts)</option>
+                                            <option value="38">Lámpara Incandescente (40 Watts)</option>
+                                            <option value="39">Lámpara Incandescente (75 Watts)</option>
+                                            <option value="40">Lámpara LED (3 Watts)</option>
+                                            <option value="41">Lámpara LED (5 Watts)</option>
+                                            <option value="42">Lámpara LED (7 Watts)</option>
+                                            <option value="43">Lámpara LED (9 Watts)</option>
+                                            <option value="44">Lámpara LED (11 Watts)</option>
+                                            <option value="45">Lavadora</option>
+                                            <option value="46">Lavaplatos</option>
+                                            <option value="47">Licuadora</option>
+                                            <option value="48">Máquina de Coser</option>
+                                            <option value="49">Microondas</option>
+                                            <option value="50">Notebook</option>
+                                            <option value="51">Olla eléctrica</option>
+                                            <option value="52">PC de Escritorio con Monitor LED 22"</option>
+                                            <option value="53">Plancha de Pelo</option>
+                                            <option value="54">Plancha de Ropa</option>
+                                            <option value="55">Radio o grabadora</option>
+                                            <option value="56">Secador de Pelo</option>
+                                            <option value="57">Secador de Ropa</option>
+                                            <option value="58">Televisor LCD de 32"</option>
+                                            <option value="59">Televisor LED de 43"</option>
+                                            <option value="60">Televisor 30" - 60"</option>
+                                            <option value="61">Tetera</option>
+                                            <option value="62">Tostador de Pan</option>
+                                            <option value="63">Tubo Fluorescente de (18 Watts)</option>
+                                            <option value="64">Tubo Fluorescente de (36 Watts)</option>
+                                            <option value="65">Tubo Fluorescente de (40 Watts)</option>
+                                            <option value="66">TV de Tubo 21"</option>
+                                            <option value="67">TV de Tubo 29" a 34"</option>
+                                            <option value="68">Ventilador de Techo</option>
+                                            <option value="69">Ventilador Mediano</option>
+                                            <option value="70">Ventilador Pequeño</option>
+                                            <option value="71">Waflera</option>
+                                        </optgroup>
+                                        <optgroup label="Equipo Eléctrico de Uso 24/7">
+                                            <option value="72">Calentador de Agua Mediano</option>
+                                            <option value="73">Calentador de Agua Pequeño</option>
+                                            <option value="74">Cisterna (1/2 HP,8.8/4.4AMPS, 110/220V)</option>
+                                            <option value="75">Cisterna (1/3 HP,7.2/3.6AMPS, 110/220V)</option>
+                                            <option value="76">Cisterna (3/4 HP,10.4/5.2AMPS, 110/220V)</option>
+                                            <option value="77">Congelador (Bajo consumo)</option>
+                                            <option value="78">Enfriador de Agua</option>
+                                            <option value="79">Heladera</option>
+                                            <option value="80">Refrigerador Grande</option>
+                                            <option value="81">Refrigerador Mediano</option>
+                                            <option value="82">Refrigerador Pequeño</option>
+                                            <option value="83">Router WIFI</option>
+                                            <option value="84">Teléfono Inalámbrico</option>
+                                        </optgroup>
+                                    </select>
+                                </td>
+                                <td colspan="2">
+                                    <button id="btnAgregar" class="btn btn-primary btn-sm" onclick="agregarEquipo()">Agregar Equipo</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container-fluid text-center text-white p-3 texto-footer">
+            <div class="container">
+                <p>
+                        Copyright © Comisión Reguladora de Energía Eléctrica - 2022.
+                        <br>
+                        La Comisión Reguladora de Energía Eléctrica (CREE), aclara que la información publicada es únicamente de carácter informativo, 
+                        exonerando a esta institución de cualquier responsabilidad legal presente o futura, si dicha información es utilizada para fines 
+                        diferentes a los antes expuestos, así mismo por los inconvenientes en la interrupción de la disponibilidad de este sitio web.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>
